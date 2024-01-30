@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:27:04 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/29 22:33:25 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/01/29 23:03:31 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int Fixed::getRawBits( void ) const {
 }
 
 
-std::ostream& operator<<(std::ostream& os,const Fixed & obj)
-{
+std::ostream& operator<<(std::ostream& os,const Fixed & obj) {
     os << obj.toFloat();
     return os;
 }
