@@ -6,7 +6,7 @@
 #    By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 22:36:42 by azgaoua           #+#    #+#              #
-#    Updated: 2024/01/29 23:30:16 by azgaoua          ###   ########.fr        #
+#    Updated: 2024/01/30 15:47:17 by azgaoua          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,9 @@ all :  $(NAME)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME) :  $(OBJS) $(FILES)
-	@echo "------>making the ex01<------"
+	@echo "------>making the ex02<------"
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo "--------->ex01 Done<---------"
+	@echo "--------->ex02 Done<---------"
 
 clean:
 	@echo " remove $(OBJS)"

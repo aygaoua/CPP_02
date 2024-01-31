@@ -6,11 +6,13 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:37:59 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/30 02:34:44 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:15:17 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::bits = 8;
 
 Fixed::Fixed() {
     value = 0;
@@ -39,12 +41,12 @@ Fixed::Fixed(const int n) {
 }
 
 Fixed::Fixed(const float n) {
-    value = std::round(n * (1 << bits)); // 2^8 = 256
+    value = std::roundf(n * (1 << bits));
 //    std::cout << "Float constructor is called" << std::endl;
 }
 
 float Fixed::toFloat(void) const {
-    return ((float)value / (float)(1 << bits)); // 2^8 = 256
+    return ((float)value / (1 << bits));
 }
 
 int Fixed::toInt(void) const {
@@ -57,34 +59,34 @@ int Fixed::getRawBits( void ) const {
 }
 
 
-std::ostream& operator<<(std::ostream& os,const Fixed & obj)
+std::ostream& operator<<(std::ostream& os,const Fixed& obj)
 {
     os << obj.toFloat();
     return os;
 }
 
 bool Fixed::operator< (const Fixed& ComparedTo) {
-    return this->toFloat() < ComparedTo.toFloat();
+    return value < ComparedTo.value;
 }
 
 bool Fixed::operator> (const Fixed& ComparedTo) {
-    return this->toFloat() > ComparedTo.toFloat();
+    return value > ComparedTo.value;
 }
 
 bool Fixed::operator>= (const Fixed& ComparedTo) const {
-    return toFloat() >= ComparedTo.toFloat();
+    return value >= ComparedTo.value;
 }
 
 bool Fixed::operator<= (const Fixed& ComparedTo) const {
-    return toFloat() <= ComparedTo.toFloat();
+    return value <= ComparedTo.value;
 }
 
 bool Fixed::operator== (Fixed const &ComparedTo) {
-    return toFloat() == ComparedTo.value;
+    return value == ComparedTo.value;
 }
 
 bool Fixed::operator!= (Fixed const &ComparedTo) {
-    return toFloat() != ComparedTo.toFloat();
+    return value != ComparedTo.value;
 }
 
 Fixed Fixed::operator+ (const Fixed& Right) {
@@ -92,7 +94,7 @@ Fixed Fixed::operator+ (const Fixed& Right) {
 }
 
 Fixed Fixed::operator- (const Fixed& Right) {
-    return toFloat() - Right.toFloat();
+    return Fixed(toFloat() - Right.toFloat());
 }
 
 Fixed Fixed::operator* (const Fixed& Right) {
@@ -103,25 +105,10 @@ Fixed Fixed::operator/ (const Fixed& Right) {
     return Fixed(toFloat() / Right.toFloat());
 }
 
-Fixed Fixed::operator++ (int n) {
+Fixed Fixed::operator++ ( int ) {
     Fixed temp = *this;
 
-    if (n < 0)
-    {
-        while (n <= 0)
-        {
-            --*this;
-            n++;
-        }
-    }
-    else
-    {
-        while (n >= 0)
-        {
-            ++*this;
-            n--;
-        }
-    }
+    ++value;
     return temp;
 }
 
@@ -130,25 +117,10 @@ Fixed Fixed::operator++ () {
     return *this;
 }
 
-Fixed Fixed::operator-- (int n) {
+Fixed Fixed::operator-- ( int ) {
     Fixed temp = *this;
 
-    if (n < 0)
-    {
-        while (n < 0)
-        {
-            ++*this;
-            n++;
-        }
-    }
-    else
-    {
-        while (n > 0)
-        {
-            --*this;
-            n--;
-        }
-    }
+    --value;
     return temp;
 }
 

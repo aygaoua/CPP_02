@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:37:56 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/30 02:32:01 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/01/30 23:26:30 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
-#define EPSILON 1.0e-7f
-
 
 class Fixed {
     private:
         int value;
-        static const int bits = 8;
+        static const int bits;
 
     public:
         Fixed( void );
@@ -45,9 +43,9 @@ class Fixed {
         Fixed operator- ( const Fixed& Right );
         Fixed operator* ( const Fixed& Right );
         Fixed operator/ ( const Fixed& Right );
-        Fixed operator++ ( int n );
+        Fixed operator++ ( int );
         Fixed operator++ ( void );
-        Fixed operator-- ( int n );
+        Fixed operator-- ( int );
         Fixed operator-- ( void );
         static Fixed& min( Fixed& a, Fixed& b );
         static Fixed& max( Fixed& a, Fixed& b );
