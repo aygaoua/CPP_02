@@ -6,11 +6,13 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:27:04 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/29 23:03:31 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:22:41 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::bits = 8;
 
 Fixed::Fixed() {
     std::cout << "Default constructor called" << std::endl;
@@ -38,12 +40,12 @@ Fixed::Fixed(const int n) {
 }
 
 Fixed::Fixed(const float n) {
-   value = std::roundf (n * 256.0f); // 2^8 = 256
+   value = std::roundf (n * (1 << bits));
    std::cout << "Float constructor is called" << std::endl;
 }
 
 float Fixed::toFloat(void) const {
-    return ((float)value / 256.0f); // 2^8 = 256
+    return ((float)value / (1 << bits));
 }
 
 int Fixed::toInt(void) const {
