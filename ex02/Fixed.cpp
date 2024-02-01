@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:37:59 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/02/01 17:09:20 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/02/01 21:31:01 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,11 @@ Fixed& Fixed::max(Fixed& a, Fixed& b) {
 }
 
 Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
-    return (a <= b) ? (Fixed&)a : (Fixed&)b;
+    return (a < b) ? (Fixed&)a : (Fixed&)b;
 }
 
 Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
-    return (a >= b) ? (Fixed&)a : (Fixed&)b;
+    return (a > b) ? (Fixed&)a : (Fixed&)b;
 }
 /*------------------------------------------------------*/
 

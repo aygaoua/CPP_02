@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:37:56 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/02/01 16:40:55 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/02/01 21:33:36 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Fixed {
 	/*------------------------------------------------*/
 
 	/*------------  (increment, decrement) operators  ------------*/
-		Fixed& 		operator++();
+		Fixed&		operator++();
 		Fixed&		operator--();
 		Fixed		operator++(int);
 		Fixed		operator--(int);
