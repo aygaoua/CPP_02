@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:04:03 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/31 13:34:13 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/02/01 10:17:24 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 
 class Fixed {
     private:
-        int value;
-        static const int bits;
+        int                 value;
+        static const int    bits;
 
     public:
-        Fixed( void );
-        Fixed(Fixed const & src);
-        Fixed &operator=(Fixed const &rhs);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-        ~Fixed( void );
+        Fixed       ( void );
+        Fixed       (Fixed const & src);
+        Fixed&      operator =(const Fixed& b);
+		int         getRawBits( void ) const;
+		void        setRawBits( int const raw );
+        ~Fixed      ( void );
 };
 
 #endif
