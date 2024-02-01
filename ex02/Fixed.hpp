@@ -6,7 +6,7 @@
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 22:37:56 by azgaoua           #+#    #+#             */
-/*   Updated: 2024/01/30 23:26:30 by azgaoua          ###   ########.fr       */
+/*   Updated: 2024/02/01 16:40:55 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,57 @@
 #define FIXED_HPP
 
 class Fixed {
-    private:
-        int value;
-        static const int bits;
+	private:
+		int					value;
+		static const int	bits;
 
-    public:
-        Fixed( void );
-        Fixed( Fixed const& src );
-        ~Fixed(void);
-        Fixed &operator=( Fixed const& rhs );
-        int getRawBits( void ) const;
-        void setRawBits( int const raw );
-        Fixed( const int n );
-        Fixed( const float n );
-        float toFloat( void ) const;
-        int toInt( void ) const;
-        bool operator< ( const Fixed& ComparedTo );
-        bool operator<= ( const Fixed& ComparedTo ) const;
-        bool operator> ( const Fixed& ComparedTo );
-        bool operator>= ( const Fixed& ComparedTo ) const;
-        bool operator== ( const Fixed& ComparedTo );
-        bool operator!= ( const Fixed& ComparedTo );
-        Fixed operator+ ( const Fixed& Right );
-        Fixed operator- ( const Fixed& Right );
-        Fixed operator* ( const Fixed& Right );
-        Fixed operator/ ( const Fixed& Right );
-        Fixed operator++ ( int );
-        Fixed operator++ ( void );
-        Fixed operator-- ( int );
-        Fixed operator-- ( void );
-        static Fixed& min( Fixed& a, Fixed& b );
-        static Fixed& max( Fixed& a, Fixed& b );
-        static Fixed& min( const Fixed& a, const Fixed& b );
-        static Fixed& max( const Fixed& a, const Fixed& b );
+	public:
+	/*-------  Orthodox Canonical Form  -------*/
+		Fixed			( void );
+		Fixed			( Fixed const& src );
+		Fixed&			operator =( Fixed const& rhs );
+		~Fixed			(void);
+	/*-----------------------------------------*/
+
+		Fixed		( const int n );
+		Fixed		( const float n );
+		void		setRawBits( int const raw );
+		int			getRawBits( void ) const;
+		float		toFloat( void ) const;
+		int 		toInt( void ) const;
+
+	/*------------  Comparison operators  ------------*/
+		bool 		operator==(const Fixed& b)	const;
+		bool 		operator!=(const Fixed& b)	const;
+		bool 		operator>(const Fixed& b)	const;
+		bool 		operator>=(const Fixed& b)	const;
+		bool 		operator<(const Fixed& b)	const;
+		bool 		operator<=(const Fixed& b)	const;
+	/*------------------------------------------------*/
+
+	/*------------  Arithmetic operators  ------------*/
+		Fixed 		operator+(const Fixed &b) const;
+		Fixed 		operator-(const Fixed &b) const;
+		Fixed 		operator/(const Fixed &b) const;
+		Fixed 		operator*(const Fixed &b) const;
+	/*------------------------------------------------*/
+
+	/*------------  (increment, decrement) operators  ------------*/
+		Fixed& 		operator++();
+		Fixed&		operator--();
+		Fixed		operator++(int);
+		Fixed		operator--(int);
+	/*-----------------------------------------------------------*/
+
+	/*------------  (max, min) overloaded member functions ------------*/
+		static Fixed&	min( Fixed& a, Fixed& b );
+		static Fixed&	max( Fixed& a, Fixed& b );
+		static Fixed&	min( const Fixed& a, const Fixed& b );
+		static Fixed&	max( const Fixed& a, const Fixed& b );
+	/*-----------------------------------------------------------------*/
+
 };
 
-std::ostream& operator<<(std::ostream& os,const Fixed & obj);
+std::ostream& 			operator<<(std::ostream& os,const Fixed & obj);
 
 #endif
